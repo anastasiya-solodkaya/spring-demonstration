@@ -3,13 +3,15 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h2>Hello, table!</h2>
+<h2>Список идей:</h2>
+<a href="create">Создать новую.</a>
 <table border="2px">
     <tr>
         <th>Id</th>
         <th>Caption</th>
         <th>Text</th>
         <th>Likes/Dislikes</th>
+        <th></th>
     </tr>
     <%--
     for(Idea item : list ){
@@ -22,6 +24,10 @@
             <td><c:out value="${item.caption}"/></td>
             <td><c:out value="${item.content}"/></td>
             <td><c:out value="${item.likes}"/>/<c:out value="${item.dislikes}"/></td>
+            <td>
+                <span><a href="update?id=${item.id}">edit</a></span>
+                <span><a href="delete?id=${item.id}">delete</a></span>
+            </td>
         </tr>
     </c:forEach>
 </table>

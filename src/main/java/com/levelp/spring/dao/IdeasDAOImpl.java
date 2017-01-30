@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
@@ -13,6 +14,8 @@ import java.util.List;
 /**
  * @author Anastasiya Solodkaya.
  */
+@EnableTransactionManagement
+@Transactional
 public class IdeasDAOImpl implements IdeasDAO {
 
     @Autowired
@@ -32,7 +35,8 @@ public class IdeasDAOImpl implements IdeasDAO {
     public int update(Idea idea) {
         Session session = factory.openSession();
         session.update(idea);
-        Serializable id = session.getIdentifier(session);
+        Serializable id = session.getIdentifier(idea);
+        session.flush();
         session.close();
         return (Integer) id;
     }
@@ -41,9 +45,10 @@ public class IdeasDAOImpl implements IdeasDAO {
     @Override
     public int delete(int id) {
         Session session = factory.openSession();
-        Idea idea = session.load(Idea.class, id);
+        Idea idea = (Idea) session.get(Idea.class, id);
         session.delete(idea);
         Serializable identifier = session.getIdentifier(idea);
+        session.flush();
         session.close();
         return (Integer) identifier;
     }
@@ -51,7 +56,7 @@ public class IdeasDAOImpl implements IdeasDAO {
     @Override
     public Idea get(int id) {
         Session session = factory.openSession();
-        Idea identifier = session.load(Idea.class, id);
+        Idea identifier = (Idea) session.get(Idea.class, id);
         session.close();
         return identifier;
     }
