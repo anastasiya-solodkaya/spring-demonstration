@@ -3,7 +3,9 @@ package com.levelp.spring.dao;
 import com.levelp.spring.model.Idea;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,26 +18,42 @@ public class IdeasDAOImpl implements IdeasDAO {
     @Autowired
     SessionFactory factory;
 
+    @Transactional
     @Override
     public int add(Idea idea) {
         Session session = factory.openSession();
         Serializable id = session.save(idea);
-        return (Integer)id;
+        session.close();
+        return (Integer) id;
     }
 
+    @Transactional
     @Override
     public int update(Idea idea) {
-        return 0;
+        Session session = factory.openSession();
+        session.update(idea);
+        Serializable id = session.getIdentifier(session);
+        session.close();
+        return (Integer) id;
     }
 
+    @Transactional
     @Override
     public int delete(int id) {
-        return 0;
+        Session session = factory.openSession();
+        Idea idea = session.load(Idea.class, id);
+        session.delete(idea);
+        Serializable identifier = session.getIdentifier(idea);
+        session.close();
+        return (Integer) identifier;
     }
 
     @Override
     public Idea get(int id) {
-        return null;
+        Session session = factory.openSession();
+        Idea identifier = session.load(Idea.class, id);
+        session.close();
+        return identifier;
     }
 
     @Override
@@ -43,6 +61,7 @@ public class IdeasDAOImpl implements IdeasDAO {
         Session session = factory.openSession();
         @SuppressWarnings("unchecked")
         List<Idea> list = session.createQuery("from Idea").list();
+        session.close();
         return list;
     }
 }
