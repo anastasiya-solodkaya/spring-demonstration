@@ -1,0 +1,84 @@
+body {
+    background-color: #ccc;
+    font-family: 'Oxygen', sans-serif;
+}
+
+.idea-note {
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px 30px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.idea-header {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.idea-header .idea-caption {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.idea-body {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    word-break: break-all;
+}
+
+.idea-footer .idea-likes, .idea-footer .idea-likes-button {
+    color: #449d44;
+    margin-right: 2px;
+}
+
+.idea-footer .idea-likes-button:hover {
+    cursor: pointer;
+    text-shadow: 1px 1px 1px #44d944;
+}
+
+.idea-footer .idea-dislikes, .idea-footer .idea-dislikes-button {
+    color: #d43f3a;
+    margin-left: 2px;
+}
+
+.idea-footer .idea-dislikes-button:hover {
+    cursor: pointer;
+    text-shadow: 1px 1px 1px #d9534f;
+}
+
+.idea-footer .idea-edit-block {
+    float: right;
+}
+
+.idea-footer .idea-edit-block a {
+    font-weight: bold;
+}
+
+.idea-footer .idea-edit-block a.idea-edit {
+    color: #449d44;
+    font-weight: bold;
+}
+
+.idea-footer .idea-edit-block a.idea-edit:hover {
+    text-shadow: 1px 1px 1px #44d944;
+}
+
+.idea-footer .idea-edit-block a.idea-delete {
+    color: #d43f3a;
+    font-weight: bold;
+}
+
+.idea-footer .idea-edit-block a.idea-delete:hover {
+    text-shadow: 1px 1px 1px #d9534f;
+}
+
+form a.danger-link {
+    margin-left: 10px;
+    color: #333;
+}
+
+form a.danger-link:hover {
+    color: #000;
+    text-decoration: none;
+}

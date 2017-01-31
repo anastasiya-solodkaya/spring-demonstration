@@ -17,13 +17,13 @@ import java.util.List;
  * @author Anastasiya Solodkaya.
  */
 @Controller
-public class MyController {
+public class IdeasController {
 
     @Autowired
     IdeasService service;
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String hello(ModelMap map){
+    @RequestMapping(value = {"/list", "/"}, method = RequestMethod.GET)
+    public String list(ModelMap map){
         List<Idea> list = service.list();
         map.addAttribute("list", list);
         return "list";
