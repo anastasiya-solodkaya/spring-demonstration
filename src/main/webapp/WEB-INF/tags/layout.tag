@@ -23,6 +23,9 @@
             <li>
                 <a href="create"><span class="glyphicon glyphicon-plus"></span> Добавить новую</a>
             </li>
+            <li>
+                <a href="register"><span class="glyphicon glyphicon-user"></span> Зарегистрироваться</a>
+            </li>
         </ul>
     </div>
 </header>

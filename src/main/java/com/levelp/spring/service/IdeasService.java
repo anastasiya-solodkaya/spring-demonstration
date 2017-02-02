@@ -1,6 +1,6 @@
 package com.levelp.spring.service;
 
-import com.levelp.spring.model.Idea;
+import com.levelp.spring.dto.IdeaDTO;
 
 import java.util.List;
 
@@ -8,13 +8,13 @@ import java.util.List;
  * @author Anastasiya Solodkaya.
  */
 public interface IdeasService {
-    int add(Idea idea);
+    int add(IdeaDTO idea);
 
-    int update(Idea idea);
+    int update(IdeaDTO idea);
 
     int delete(int id);
 
-    Idea get(int id);
+    IdeaDTO get(int id);
 
-    List<Idea> list();
+    List<IdeaDTO> list();
 }

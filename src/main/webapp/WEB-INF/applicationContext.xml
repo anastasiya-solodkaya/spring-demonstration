@@ -31,6 +31,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.levelp.spring.model.Idea</value>
+                <value>com.levelp.spring.model.User</value>
             </list>
         </property>
     </bean>
@@ -43,5 +44,6 @@
 
     <bean id="ideasDAO" class="com.levelp.spring.dao.IdeasDAOImpl"/>
     <bean id="ideasService" class="com.levelp.spring.service.IdeasServiceImpl"/>
+    <bean id="loginService" class="com.levelp.spring.service.RegistrationServiceImpl"/>
 
     </beans>

@@ -1,6 +1,6 @@
 package com.levelp.spring.controller;
 
-import com.levelp.spring.model.Idea;
+import com.levelp.spring.dto.IdeaDTO;
 import com.levelp.spring.service.IdeasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ public class IdeasController {
 
     @RequestMapping(value = {"/list", "/"}, method = RequestMethod.GET)
     public String list(ModelMap map){
-        List<Idea> list = service.list();
+        List<IdeaDTO> list = service.list();
         map.addAttribute("list", list);
         return "list";
     }
@@ -33,7 +33,7 @@ public class IdeasController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView createNewForm(){
         ModelAndView modelAndView = new ModelAndView("addForm");
-        modelAndView.getModelMap().addAttribute("newIdea", new Idea());
+        modelAndView.getModelMap().addAttribute("newIdea", new IdeaDTO());
         return modelAndView;
     }
 
@@ -45,13 +45,13 @@ public class IdeasController {
     }
 
     @RequestMapping(value = "/submitNew", method = RequestMethod.POST)
-    public ModelAndView createNewAction(@ModelAttribute Idea newIdea){
+    public ModelAndView createNewAction(@ModelAttribute IdeaDTO newIdea){
         service.add(newIdea);
         return new ModelAndView("redirect:list");
     }
 
     @RequestMapping(value = "/submitUpdate", method = RequestMethod.POST)
-    public ModelAndView updateAction(@ModelAttribute Idea newIdea){
+    public ModelAndView updateAction(@ModelAttribute IdeaDTO newIdea){
         service.update(newIdea);
         return new ModelAndView("redirect:list");
     }

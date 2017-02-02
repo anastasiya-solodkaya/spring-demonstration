@@ -1,6 +1,7 @@
 package com.levelp.spring.dao;
 
 import com.levelp.spring.model.Idea;
+import com.levelp.spring.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -68,5 +69,12 @@ public class IdeasDAOImpl implements IdeasDAO {
         List<Idea> list = session.createQuery("from Idea").list();
         session.close();
         return list;
+    }
+
+    @Override
+    public boolean registerUser(User user) {
+        Session session = factory.openSession();
+        Serializable id = session.save(user);
+        return true;
     }
 }

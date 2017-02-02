@@ -1,6 +1,7 @@
 package com.levelp.spring.dao;
 
 import com.levelp.spring.model.Idea;
+import com.levelp.spring.model.User;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface IdeasDAO {
     Idea get(int id);
 
     List<Idea> list();
+
+    boolean registerUser(User user);
 }
