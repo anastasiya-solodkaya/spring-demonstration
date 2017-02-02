@@ -8,11 +8,18 @@
         <form:form id="formRegister" modelAttribute="user" method="post" action="registeruser">
             <div class="form-group">
                 <label for="emailId">Email</label>
+                <form:errors path="login" cssClass="form-control label-danger"/>
                 <form:input path="login" id="emailId" cssClass="form-control"/>
             </div>
             <div class="form-group">
                 <label for="passwordId">Пароль</label>
+                <form:errors path="password" cssClass="form-control label-danger"/>
                 <form:password path="password" id="passwordId" cssClass="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="passwordId">Подтверждение пароля</label>
+                <form:errors cssClass="form-control label-danger"/>
+                <form:password path="password1" id="passwordId1" cssClass="form-control"/>
             </div>
             <button type="submit" class="btn btn-success">Зарегистрироваться</button>
             <a href="list" class="danger-link">Отмена</a>

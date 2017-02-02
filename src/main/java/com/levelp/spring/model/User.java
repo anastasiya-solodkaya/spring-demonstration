@@ -7,7 +7,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "account")
+@NamedQuery(name = User.SELECT_USER_COUNT_BY_LOGIN, query = "select count(id) from User where email=:login")
 public class User {
+
+    public static final String SELECT_USER_COUNT_BY_LOGIN = "select_user_count_by_login";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

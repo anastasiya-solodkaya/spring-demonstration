@@ -18,6 +18,11 @@ public class RegistrationServiceImpl implements RegistrationService {
     private IdeasDAO dao;
 
     @Override
+    public boolean isUserExists(String login) {
+        return dao.isUserExists(login);
+    }
+
+    @Override
     public RegistrationStatus register(RegistrationUserDTO dto) {
         try {
             User user = new User();

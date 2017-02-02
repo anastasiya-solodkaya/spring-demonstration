@@ -20,4 +20,6 @@ public interface IdeasDAO {
     List<Idea> list();
 
     boolean registerUser(User user);
+
+    boolean isUserExists(String login);
 }

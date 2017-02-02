@@ -71,10 +71,20 @@ public class IdeasDAOImpl implements IdeasDAO {
         return list;
     }
 
+    @Transactional
     @Override
     public boolean registerUser(User user) {
         Session session = factory.openSession();
         Serializable id = session.save(user);
         return true;
+    }
+
+    @Override
+    public boolean isUserExists(String login) {
+        Session session = factory.openSession();
+        Long count = (Long) session.getNamedQuery(User.SELECT_USER_COUNT_BY_LOGIN)
+                .setParameter("login", login)
+                .uniqueResult();
+        return count > 0;
     }
 }
